@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form method="post">
+		{% csrf_token %}
+		<p> quieres borrar este todo</p>
+		<p> {{ todo }}</p>
+		<button>Borrar</button>
+	</form>
+</body>
+</html>

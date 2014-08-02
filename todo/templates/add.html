@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Crear un todo</title>
+</head>
+<body>
+	<form method="post"
+	action="{% if add%}{% url 'add' %}{% else %}{% url 'edit' pk=id %}{% endif %}" 
+	>
+		{% csrf_token %}
+	<div>
+		{{ form.as_p }}
+	</div>
+	<p>
+		<button>Enviar</button>
+	</p>
+	</form>
+</body>
+</html>

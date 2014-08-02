@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List</title>
+</head>
+<body>
+	<nav>
+		<a href="{% url 'add' %}">agregar</a>
+	</nav>
+	{% for todo in list %}
+    	<div>
+    		<a href="{% url 'edit' pk=todo.id %}">{{ todo }}</a>
+    		<a href="{% url 'delete' pk=todo.id %}">x</a>
+    	</div>
+	{% endfor %}
+</body>
+</html>
