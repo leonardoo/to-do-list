@@ -7,7 +7,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'todo.views.list', name="lista"),
+    url(r'^$', 'todo.views.list', name="list"),
     url(r'^add/$', 'todo.views.add', name="add"),
     url(r'^edit/(?P<pk>\d+)/$', 'todo.views.edit', name="edit"),
     url(r'^delete/(?P<pk>\d+)/$', 'todo.views.delete', name="delete"),

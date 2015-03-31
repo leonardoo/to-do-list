@@ -1,6 +1,6 @@
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from forms import *
 from models import *
@@ -15,11 +15,10 @@ def add(request):
         form = TodoForm(request.POST)
         if form.is_valid():
             form.save()
-            form = TodoForm()  
-            return list(request)
+            return redirect(reverse('list'))
     else:
         form = TodoForm()
-    return render(request, 'add.html', {'form': form, 'add': True})
+    return render(request, 'add.html', {'form': form})
 
 def edit(request, **kwargs):
     pk = kwargs.get('pk')
@@ -29,15 +28,15 @@ def edit(request, **kwargs):
         if form.is_valid():
             form.save()
             form = TodoForm()
-            return HttpResponseRedirect(reverse('lista'))
+            return redirect(reverse('list'))
     else:
         form = TodoForm(instance=todo)
-    return render(request, 'add.html', {'form': form, 'add': False, 'id': pk})
+    return render(request, 'add.html', {'form': form})
 
 def delete(request, **kwargs):
     pk = kwargs.get('pk')
     todo = Todo.objects.get(id=pk)
     if request.method == "POST":
         todo.delete()
-        return HttpResponseRedirect(reverse('lista'))
+        return redirect(reverse('list'))
     return render(request, 'delete.html', {'todo': todo})

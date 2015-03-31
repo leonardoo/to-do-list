@@ -4,9 +4,7 @@
 	<title>Crear un todo</title>
 </head>
 <body>
-	<form method="post"
-	action="{% if add%}{% url 'add' %}{% else %}{% url 'edit' pk=id %}{% endif %}" 
-	>
+	<form method="post">
 		{% csrf_token %}
 	<div>
 		{{ form.as_p }}
